@@ -1,0 +1,58 @@
+//cards.cpp
+//Authors: Your Partner's Name and Your Name
+//Implementation of the classes defined in cards.h
+
+#include "cards.h"
+
+Cards::Cards() {
+    top = NULL;
+}
+
+Cards::~Cards(){
+    card* tmp = top;
+    card* del = top;
+    while (tmp) {
+        tmp = tmp->next;
+        delete del;
+        del = tmp;
+    }
+    top = NULL;
+}
+    
+void Cards::ShuffleDeck(){
+    std::cout<<"no output";
+}
+ 
+void takeCardfromTop(Cards& source, Cards& target){
+    if (source) { //if there's a card on the Source object, it
+                  //moves the first card to the first card of
+                  //the target object
+        card* tmp = source.top;
+        source.top = source.top->next;
+        tmp->next = target.top;
+        target.top = tmp;
+    }
+}
+
+void seekCard(Cards& source, Cards& target, char n, char s);
+    card* tmp = target.top;
+    card* tmpPrev = NULL;
+        if (tmp->number == n && tmp->suit == s){
+            target.top = target.top->next;
+            tmp->next = source.top;
+            source.top = tmp;
+            return;
+        }
+    tmpPrev = tmp;
+    tmp = tmp->next;
+    while (tmp){
+        if (tmp->number == n && tmp->suit == s){
+            tmpPrev->next = tmp->next
+            tmp->next  = source.top;
+            source.top = tmp;
+            return;
+        }
+        tmpPrev = tmp;
+        tmp = tmp->next;
+    }
+}
