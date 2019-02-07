@@ -25,10 +25,16 @@ int main(int argv, char** argc){
   }
 
   // Create two objects of the class you defined 
+  Cards Alice = new Cards();
+  Cards Bob = new Cards();
   // to contain two sets of cards in two input files
+  
+  char nextSuit = NULL;
+  char nextNum = NULL;
 
   // Read each file and store cards
   while (getline (cardFile1, line) && (line.length() > 0)){
+
   }
   cardFile1.close();
 

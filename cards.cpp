@@ -20,8 +20,29 @@ Cards::~Cards(){
     top = NULL;
 }
     
-void Cards::ShuffleDeck(){
+void Cards::shuffleDeck(){
     cout<<"no output";
+}
+
+void Cards::addCard(char n, char s){
+    card* tmp = top;
+    if (tmp ==  NULL){
+        tmp = new card;
+        tmp->number = n;
+        tmp->suit = s;
+        top = tmp;
+        tmp->next = NULL;
+        return;
+    }
+    while(tmp){
+        if (tmp->next == NULL){
+            card* last = new card;
+            last->number = n;
+            last->suit = s;
+            tmp->next = last;
+            last->next = NULL;
+        }
+    }
 }
  
 void takeCardfromTop(Cards& source, Cards& target){
@@ -59,6 +80,10 @@ void seekCard(Cards& source, Cards& target, char n, char s){
 }
 
 ostream& operator <<(ostream& os, Cards& source){
-    os << source.top->suit <<" "<< source.top->number;
+    card* tmp = source.top;
+    while (tmp){
+        os << tmp->suit <<" "<< tmp->number<<endl;
+        tmp = tmp->next;
+    }
     return os;
 }

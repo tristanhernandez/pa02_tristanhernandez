@@ -23,7 +23,8 @@ class Cards{
     public:
         Cards();
         ~Cards();
-        void ShuffleDeck();
+        void shuffleDeck();
+        void addCard(char n, char s);
         friend void takeCardfromTop(Cards& source, Cards& target);
         friend void seekCard(Cards& source, Cards& target, char n, char s);
         friend ostream& operator <<(ostream& os, Cards& source);
