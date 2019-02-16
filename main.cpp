@@ -99,7 +99,7 @@ int main(int argv, char** argc){
 
   }
 
-  cout << Alice << endl << Bob;
+  cout << endl << Alice << endl << Bob;
 
   return 0;
 }
