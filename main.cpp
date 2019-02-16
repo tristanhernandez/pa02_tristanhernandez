@@ -39,22 +39,17 @@ int main(int argv, char** argc){
       nextSuit = line.at(0);
       nextNum = line.at(2);
       Alice.hand.addCard(nextSuit, nextNum);
-  //    cout<<"TEST"<<Alice<<endl;
   }
   cardFile1.close();
-
-  cout<<Alice<<endl;
 
 
   while (getline (cardFile2, line) && (line.length() > 0)){
       nextSuit = line.at(0);
       nextNum = line.at(2);
       Bob.hand.addCard(nextSuit, nextNum);
-  //    cout<<"TEST"<<Bob<<endl;
   }
   cardFile2.close();
 
-  cout<<Bob<<endl;
 
   //
   // Start the game
@@ -74,6 +69,9 @@ int main(int argv, char** argc){
         if (FirstPlayerTurn)
         {
             if ( seekCard( Alice.hand, Bob.hand, nextSuit, nextNum) ){
+                //attempts to match cards in both hands
+                //if it does, it is stated so, and the players switch turns
+                //otherwise, continue iterating through the player's hand
                 cout<< Alice.getName() <<" picked matching card "
                     <<nextSuit<<" "<<nextNum<<endl;
                 FirstPlayerTurn = false;

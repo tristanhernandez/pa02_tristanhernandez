@@ -21,6 +21,9 @@ CardList::~CardList(){
 }
 
 /*
+
+//Copy constr. and assign. operator were unneeded in the lab
+
 CardList::CardList(CardList& source){
     //Copy Constructor
     card* tmp = source.head;
@@ -42,6 +45,7 @@ CardList::CardList(CardList& source){
 */
 
 card* CardList::getHead() const{
+    //returns the head of the list
     return head;
 }
 
@@ -126,20 +130,8 @@ bool CardList::seekCard2(char s, char n){
     return false;
 }
 
-/*
-card* CardList::getNthCard(int num, card* nthCard){
-    //returns the nth card in a CardList, if it exists
-    //otherwise returns NULL
-    //when first called, nthCard is always head
-    if( nthCard == NULL)
-        return NULL;
-    if( num == 0 )
-        return nthCard;
-    return getNthCard(num-1, nthCard);
-}
-*/
-
 void CardList::deleteAll(){
+    //deletes all cards
     if( head != NULL )
     {
         card* tmp = head;
@@ -156,6 +148,7 @@ void CardList::deleteAll(){
 }
 
 ostream& operator <<(ostream& os, const CardList& source){
+    //prints all cards in the list
     card* tmp = source.head;
     while (tmp){
         os << tmp;
@@ -169,14 +162,18 @@ ostream& operator <<(ostream& os, const CardList& source){
 //
 
 Player::Player(string n){
+    //initializes a player with a name
+    //Their hand always starts empty
     name = n;
 }
 
 string Player::getName() const{
+    //returns the name
     return name;
 }
 
 ostream& operator <<(ostream& os, const Player& source){
+    //prints the player's hand
     os << source.name << "'s cards:" << endl << source.hand;
     return os;
 }
