@@ -26,12 +26,13 @@ class CardList{
         ~CardList();
         //CardList(const CardList& source);
         //CardList& operator = (const Cardlist& source)
+        card* getHead() const;
         void addCard(char n, char s);
         //void deleteCard(char n, char s);
         void deleteAll();
         friend bool seekCard(CardList& c1, CardList& c2, char n, char s);
         bool seekCard2(char n, char s);
-        card* getNthCard(int num, card* nthCard );
+        //card* getNthCard(int num, card* nthCard );
         friend ostream& operator <<(ostream& os, const CardList& source);
 
 };
@@ -45,7 +46,7 @@ class Player{
         CardList hand;
         Player(string n);
         string getName() const;
-        friend ostream& operator <<(ostream& os,const Player& source);
+        friend ostream& operator <<(ostream& os, const Player& source);
 };
 
 

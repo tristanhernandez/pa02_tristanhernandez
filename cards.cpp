@@ -41,6 +41,10 @@ CardList::CardList(CardList& source){
 }
 */
 
+card* CardList::getHead() const{
+    return head;
+}
+
 void CardList::addCard(char s, char n){
     //adds a new card at the end of the list
     card* newCard = new card;
@@ -122,6 +126,7 @@ bool CardList::seekCard2(char s, char n){
     return false;
 }
 
+/*
 card* CardList::getNthCard(int num, card* nthCard){
     //returns the nth card in a CardList, if it exists
     //otherwise returns NULL
@@ -132,9 +137,7 @@ card* CardList::getNthCard(int num, card* nthCard){
         return nthCard;
     return getNthCard(num-1, nthCard);
 }
-
-//bool haveMatchingCards(CardList& c1, CardList& c2){
-
+*/
 
 void CardList::deleteAll(){
     if( head != NULL )
@@ -155,7 +158,7 @@ void CardList::deleteAll(){
 ostream& operator <<(ostream& os, const CardList& source){
     card* tmp = source.head;
     while (tmp){
-        os << tmp->suit <<" "<< tmp->number<<endl;
+        os << tmp;
         tmp = tmp->next;
     }
     return os;
@@ -173,8 +176,8 @@ string Player::getName() const{
     return name;
 }
 
-ostream& operator <<(ostream& os, Player& source){
-    os << source.getName() << "'s cards:" << endl << source.hand;
+ostream& operator <<(ostream& os, const Player& source){
+    os << source.name << "'s cards:" << endl << source.hand;
     return os;
 }
 
