@@ -4,9 +4,9 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-#include "cards.cpp"
+#include "cards.h"
 
-using namespace std;
+//using namespace std;
 
 int main(int argv, char** argc){
   if(argv != 3){
@@ -29,26 +29,72 @@ int main(int argv, char** argc){
   }
 
   // Create two objects of the class you defined 
-  Cards Alice;
-  Cards Bob;
+  Player Alice("Alice");
+  Player Bob("Bob");
   // to contain two sets of cards in two input files
   
-  char nextSuit = 'a';
-  char nextNum = 'a';
+  char nextNum = 'A';
+  char nextSuit = 'A';
 
   // Read each file and store cards
   while (getline (cardFile1, line) && (line.length() > 0)){
       nextSuit = line.at(0);
       nextNum = line.at(2);
-      Alice.addCard(nextNum, nextSuit);
+      Alice.hand.addCard(nextSuit, nextNum);
+  //    cout<<"TEST"<<Alice<<endl;
   }
   cardFile1.close();
 
-  cout<<"Alice's cards:"<<endl<<Alice<<endl;
+  cout<<Alice<<endl;
+
 
   while (getline (cardFile2, line) && (line.length() > 0)){
+      nextSuit = line.at(0);
+      nextNum = line.at(2);
+      Bob.hand.addCard(nextSuit, nextNum);
+  //    cout<<"TEST"<<Bob<<endl;
   }
   cardFile2.close();
+
+  cout<<Bob<<endl;
+
+  //
+  //tests all methods added into cards.h
+  //
+
+  nextSuit = 'c';
+  nextNum = '3';
+  if ( seekCard(Alice.hand, Bob.hand, nextSuit, nextNum) ) {
+      cout << Alice.getName() << " picked matching card "<<nextSuit<<" "<<nextNum<<endl;
+  } else {
+      cout << "no card "<<nextSuit<<" "<<nextNum<<" found"<<endl;
+   }
+    cout<<Alice<<endl<<Bob<<endl;
+
+
+  nextSuit = 'c';
+  nextNum = '3';
+  if ( seekCard(Alice.hand, Bob.hand, nextSuit, nextNum) ) {
+      cout << Alice.getName() << " picked matching card "<<nextSuit<<" "<<nextNum<<endl;
+  } else {
+      cout << "no card "<<nextSuit<<" "<<nextNum<<" found"<<endl;
+   }
+    cout<<Alice<<endl<<Bob<<endl;
+
+
+  nextSuit = 'h'; //h 3 is in Alice but not Bob
+  nextNum = '3';
+  if ( seekCard(Alice.hand, Bob.hand, nextSuit, nextNum) ) {
+      cout << Alice.getName() << " picked matching card "<<nextSuit<<" "<<nextNum<<endl;
+  } else {
+      cout << "no card "<<nextSuit<<" "<<nextNum<<" found"<<endl;
+   }
+    cout<<Alice<<endl<<Bob<<endl;
+
+
+  //CardList copyConstrTest(Alice.hand);
+  //cout<<copyConstrTest<<endl;
+  //delete copyConstrTest;
 
     return 0;
 }

@@ -2,6 +2,8 @@
 #include <fstream>
 #include <string>
 
+#include "cards.h"
+
 using namespace std;
 
 int main(int argv, char** argc){
@@ -25,12 +27,12 @@ int main(int argv, char** argc){
   }
 
   // Create two objects of the class you defined 
-  Cards Alice = new Cards();
-  Cards Bob = new Cards();
+  Player Alice("Alice");
+  Player Bob("Bob");
   // to contain two sets of cards in two input files
   
-  char nextSuit = NULL;
-  char nextNum = NULL;
+  char nextSuit = 'a';
+  char nextNum = 'a';
 
   // Read each file and store cards
   while (getline (cardFile1, line) && (line.length() > 0)){
@@ -43,6 +45,27 @@ int main(int argv, char** argc){
   cardFile2.close();
 
   // Start the game
-
+  //
+  //bool FirstPlayerTurn = true;
+  //
+  //while( haveMatchingCard(Alice, Bob) )
+  //{
+  //    do{
+  //
+  //    }
+  //    while( isNum(nextNum) )
+  //
+  //    do{
+  //
+  //    }
+  //    while (isSuit(nextSuit) )
+  //
+  //    if (FirstPlayerTurn){
+  //        seekCard(nextNum, nextSuit, Alice, Bob);
+  //        FirstPlayerTurn = false;
+  //    }else{
+  //        seekCard(nextNum, nextSuit, Alice, Bob);
+  //        FirstPlayerTurn = true;
+  //}
   return 0;
 }

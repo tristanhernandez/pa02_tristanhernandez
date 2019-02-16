@@ -15,20 +15,55 @@ struct card{
 };
 
 
-class Cards{
+class CardList{
 
     private:
-        card* top;
+        card* head;
+        card* tail;
 
     public:
-        Cards();
-        ~Cards();
-        void shuffleDeck();
+        CardList();
+        ~CardList();
+        //CardList(const CardList& source);
+        //CardList& operator = (const Cardlist& source)
         void addCard(char n, char s);
-        friend void takeCardfromTop(Cards& source, Cards& target);
-        friend void seekCard(Cards& source, Cards& target, char n, char s);
-        friend ostream& operator <<(ostream& os, Cards& source);
+        //void deleteCard(char n, char s);
+        void deleteAll();
+        friend bool seekCard(CardList& c1, CardList& c2, char n, char s);
+        bool seekCard2(char n, char s);
+        card* getNthCard(int num, card* nthCard );
+        friend ostream& operator <<(ostream& os, const CardList& source);
 
 };
+
+
+class Player{
+
+    private:
+        string name;
+    public:
+        CardList hand;
+        Player(string n);
+        string getName() const;
+        friend ostream& operator <<(ostream& os,const Player& source);
+};
+
+
+ostream& operator <<(ostream& os, const card* source);
+//isSuit(char s){
+//    //Checks if s is a valid char for a suit
+//    if( s=='c' || s=='d' || s=='h' || s=='s' )
+//        return true;
+//    return false;
+
+//isNum(char n){
+//    Checks if n is a valid char for a number
+//    if( n=='2' || n=='3' || n=='4' || n=='5'
+//     || n=='6' || n=='7' || n=='8' || n=='9'
+//     || n=='0' || n=='j' || n=='q' || n=='k'
+//     || n=='a' )
+//        return true;
+//    return false;
+//}
 
 #endif
